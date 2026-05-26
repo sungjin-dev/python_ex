@@ -29,10 +29,3 @@ def compareNumbers():
             collect.append(item)
     
     return collect
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> e8dc05e172d3d89562e657469a5cb8dbd09aa587

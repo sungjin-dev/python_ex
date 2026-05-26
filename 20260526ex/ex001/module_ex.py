@@ -14,17 +14,17 @@ factorial(): 팩토리얼한 값을 반환
 sqrt(): 제곱근을 반환
 '''
 
-# import math 
+import math 
 
-# print(f'math.fabs(-3.1415) : {math.fabs(-3.1415)}')   # 절대값
-# print(f'math.ceil(-3.1415) : {math.ceil(-3.1415)}')   # 올림    ceiling이 천장이니까
-# print(f'math.floor(-3.1415) : {math.floor(-3.1415)}')   # 내림   floor 이게 바닥이니까
-# print(f'math.trunc(-3.1415) : {math.trunc(-3.1415)}')   # 버림
-# print(f'math.gcd(-3.1415) : {math.gcd(9, 21)}')   # 최대공약수
-# print(f'math.factorial(-3.1415) : {math.factorial(7)}')   # 팩토리얼 
-# print(f'math.sqrt(-3.1415) : {math.sqrt(9)}')   # 제곱근  (실수 형태로 나옴)
+print(f'math.fabs(-3.1415) : {math.fabs(-3.1415)}')   # 절대값
+print(f'math.ceil(-3.1415) : {math.ceil(-3.1415)}')   # 올림    ceiling이 천장이니까
+print(f'math.floor(-3.1415) : {math.floor(-3.1415)}')   # 내림   floor 이게 바닥이니까
+print(f'math.trunc(-3.1415) : {math.trunc(-3.1415)}')   # 버림
+print(f'math.gcd(-3.1415) : {math.gcd(9, 21)}')   # 최대공약수
+print(f'math.factorial(-3.1415) : {math.factorial(7)}')   # 팩토리얼 
+print(f'math.sqrt(-3.1415) : {math.sqrt(9)}')   # 제곱근(Square Root)  (실수 형태로 나옴)
 
-# # 파이썬 내장 함수 중에서 수학과 관련한 함수
+#  파이썬 내장 함수 중에서 수학과 관련한 함수
 
 # '''
 # sum(): 전체 합을 반환 
@@ -38,12 +38,12 @@ sqrt(): 제곱근을 반환
 # # random 모듈: 난수를 발생시키는 모듈이다. 
 
 # '''
-# random(): 0이상 1미만의 난수 발생
-# randint(n1, n2): n1이상 n2이하의 난수 발생
-# randrange(n1, n2): n1이상 n2미만의 난수 발생      range는 항상 끝값의 -1이러네
-# sample(range(n1, n2), n3): n1이상 n2미만의 난수 n3개 발생(중복 없이)
-# choice(): 무작위로 1개 아이템 선택함.
-# shuffle(): 아이템 순서 섞음
+random(): 0이상 1미만의 난수 발생
+randint(n1, n2): n1이상 n2이하의 난수 발생
+randrange(n1, n2): n1이상 n2미만의 난수 발생      range는 항상 끝값의 -1이러네
+sample(range(n1, n2), n3): n1이상 n2미만의 난수 n3개 발생(중복 없이)
+choice(): 무작위로 1개 아이템 선택함.
+shuffle(): 아이템 순서 섞음
 # '''
 
 # import random
@@ -106,7 +106,3 @@ sqrt(): 제곱근을 반환
 # print(f'시:분:초 --> {time.strftime('%H:%M:%S', time.localtime())}')
 # print(f'년:월:일 시:분:초 --> {time.strftime('%Y:$m:%d %H:%M:%S', time.localtime())}')
 
-
-import random
-
-random.sample(range(1,46), 6)

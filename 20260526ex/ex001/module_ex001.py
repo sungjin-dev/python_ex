@@ -11,35 +11,38 @@ userChoice = []
 ComNum = []
 data = ['가위', '바위', '보']
 
-def userRSPdata(ns):
+def userRPSdata(rsp):
     global userChoice
-    userChoice = ns
+    userChoice = rsp
 
-def setRNumbers():
-    global ComNums
-    ComNums = random.randrange(0,3)
-    return data[ComNums]
+def setRNumber():
+    global ComNum
+    ComNum = random.randrange(0,3)
+    
+def getRNumber():
+     
+    return data[ComNum]
 
-def compareNumbers():
+def compareNumber():
     global userChoice
-    global ComNums
+    global ComNum
 
-    if data[ComNums] == userChoice[0]:
+    if data[ComNum] == userChoice[0]:
         return '무승부'
 
-    if data[ComNums] == '가위':
+    if data[ComNum] == '가위':
         if userChoice[0] == '보':
             return '컴퓨터 승리!'
         if userChoice[0] == '바위':
             return '사용자 승리!'
         
-    if data[ComNums] == '바위':
+    if data[ComNum] == '바위':
         if userChoice[0] == '가위':
             return '컴퓨터 승리!'
         if userChoice[0] == '보':
             return '사용자 승리!'
         
-    if data[ComNums] == '보':
+    if data[ComNum] == '보':
         if userChoice[0] == '가위':
             return '사용자 승리!'
         if userChoice[0] == '바위':
