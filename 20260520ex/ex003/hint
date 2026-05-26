@@ -1,0 +1,16 @@
+def weightHint(weight: float):
+    # 딕셔너리에 저장된 보석의 무게를 정수로 변환하여 비교합니다.
+    if int(game_jewels[stoleJewel]) < weight:
+        print(f'{stoleJewel}는 {int(weight)}g 미만입니다.')
+    else:
+        print(f'{stoleJewel}는 {int(weight)}g 이상입니다.')
+
+    if stoleJewel >=20:
+        print(f'{game_jewels[stoleJewel]-20} < 훔친 보석 무게 {stoleJewel} < {game_jewels[stoleJewel]+20}') 
+    else: 
+        print(f'20 <{game_jewels[stoleJewel]} < 훔친 보석 무게 {stoleJewel} < {game_jewels[stoleJewel]+20}') 
+
+
+       
+
+    
