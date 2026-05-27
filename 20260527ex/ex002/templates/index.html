@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1조 뉴스 검색</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            margin:40px;
+        }
+
+        h1{
+            color:green;
+        }
+
+        .news{
+            border:1px solid #ccc;
+            padding:15px;
+            margin-bottom:20px;
+        }
+
+        a{
+            color:blue;
+            text-decoration:none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>1조 뉴스 검색</h1>
+
+    <form method="POST">
+
+        <input type="text" name="keyword" placeholder="검색어 입력">
+
+        <button type="submit">검색</button>
+
+    </form>
+
+    <hr>
+
+    {% for item in results %}
+
+    <div class="news">
+
+        <h3>{{ item.title | safe }}</h3>
+
+        <p>{{ item.description | safe }}</p>
+
+        <p>작성일: {{ item.pDate }}</p>
+
+        <a href="{{ item.link }}" target="_blank">
+            뉴스 보기
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</body>
+</html>
