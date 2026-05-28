@@ -6,8 +6,8 @@ import json
 
 app = Flask(__name__)
 
-client_id = '1JpN61biLGVpu23H0EBN'
-client_secret = 'XHNI8GJKHu'
+client_id = ''
+client_secret = ''
 
 
 # 네이버 API 요청
