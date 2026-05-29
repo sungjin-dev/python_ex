@@ -1,4 +1,3 @@
-
 DEV_MOD = True
 
 flag = True
@@ -55,4 +54,3 @@ while flag:
             uMail = input('input member EMAIL:')
             while True:
                 if '@' not in uMail:
-                    

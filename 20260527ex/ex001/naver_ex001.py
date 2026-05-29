@@ -23,8 +23,8 @@ import datetime
 import json
 
 # 네이버 API 개발자 센터 Key (본인 Key 입력)
-client_id = 'qU7Vv0lpL6Vn_xp0A_M5'
-client_secret = 'BqTjXFOz8m'
+client_id = 'id'
+client_secret = 'pw'
 
 # NAVER에서 원본 데이터 가져오는 함수
 def getRequestUrl(url):
