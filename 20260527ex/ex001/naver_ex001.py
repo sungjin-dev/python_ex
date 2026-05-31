@@ -1,21 +1,6 @@
-# 제공해주신 코드는 이미 VS Code(Visual Studio Code)에서 바로 실행할 수 있는 훌륭한 파이썬 코드입니다! 다만, VS Code 환경이나 파이썬 버전 환경에 따라 실행 시 에러를 일으킬 수 있는 치명적인 버그 2가지와 모듈 누락이 있어서 그 부분을 명확하게 수정해 드려야 할 것 같아요.
 
-# VS Code에서 실행하기 전 꼭 수정해야 할 부분
-# 1. urllib.parse 모듈 누락 (NameError 방지)
-# 코드 내부에서 urllib.parse.quote()를 사용하고 계시지만, 정작 파일 최상단에는 import urllib.parse가 빠져 있습니다. 이대로 실행하면 NameError가 발생합니다.
-
-# 2. response.read() 중복 호출 문제 (None 반환 버그)
-# getRequestUrl 함수 안에서 주석 처리된 print문 바로 아래를 보시면 다음과 같이 작성되어 있습니다.
-
-
-# response.read()가 비어있게 되는 원인
-# if response.getcode() == 200:
-#     print(f'[{datetime.datetime.now()}] URL REQUEST SUCCESS!!')
-#     return response.read().decode('utf-8')
-# # 파이썬의 response.read()는 한 번 호출하여 데이터를 읽고 나면 스트림이 닫혀서 두 번째 호출할 때는 빈 값("")을 반환합니다. 주석 처리된 곳에서 비록 실행은 안 되었지만, 추후 주석을 풀거나 코드를 수정할 때 안전하도록 데이터를 변수에 한 번만 담아서 처리하는 것이 정석입니다.
-
-# 3. 네이버 API의 페이지 제한 (while문 무한 루프 또는 에러 방지)
-#네이버 검색 API는 start 인덱스 값이 1000을 넘어가면 에러(400 Bad Request)를 뱉거나 멈추게 되어 있습니다. 검색 데이터가 아무리 많아도 start 값이 1000을 넘지 않도록 안전장치를 걸어주어야 VS Code에서 프로그램이 뻗지 않습니다.
+    
+#네이버 검색 API는 start 인있습니다. 검색 데이터가 아무리 많아도 start 값이 1000을 넘지 않도록 안전장치를 걸어주어야 VS Code에서 프로그램이 뻗지 않습니다.
 
 import urllib.request
 import urllib.parse  # 💡 필수 모듈 추가
