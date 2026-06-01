@@ -6,12 +6,27 @@ def setSigninedMemberId(mId = ''):
     signinedMemberId = mId
 
 # def setSigninedMemberId(logined, money):
-#     if logined == boss:
+#     # 아무나 돈을 못 바꾸게, boss일 때만 값을 변경하도록 '검증'을 거침!
+#     if logined == boss: 
 #         salary = money
 
 # getter
 def getSigninedMemberId():
     return signinedMemberId
+'''
+1)읽기 전용(Read-Only) 데이터를 만들 수 있음
+어떤 데이터를 외부에서 읽을 수만 있어야 하고, 절대 수정하면 안 되는 경우
+(예: 계좌 개설일, 유저의 고유 번호 등)
+Setter 함수를 아예 안 만들고 Getter 함수만 만들어두면 됩니다.
+
+2) 유지보수)가 엄청나게 편해짐
+def setSigninedMemberId(mId = ''):
+    global signinedMemberId
+    signinedMemberId = mId.upper()
+    
+    # 함수 안에서만 딱 한 번 바꿔주면 100군데가 다 자동으로 대문자 적용!
+'''
+
 
 
 # 데이터 무결성

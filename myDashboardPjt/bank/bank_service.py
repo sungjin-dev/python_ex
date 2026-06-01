@@ -9,9 +9,9 @@ class BankService:
     def __init__(self):
         self.accounts = {}     # 단기 기억. 객체를 한번 생성하고 나면 없어질 데이터
         self.init_database()   # 장기 기억으로 관리. 따로 파일로 그 과정을 저장하고 관리하게끔 해줌.
-                               # 전역 변수도 결국 '단기 기억(RAM)'입니다. (가장 중요)                      
+                               # 전역 변수도 결국 '단기 기억(RAM)' 클래스 상단에 전역변수를 선언해도 소용없음                   
     def init_database(self):
-        # 현재 파일 위치           절대값 경로
+        # 현재 파일 위치              절대값 경로
         BASE_PATH = os.path.dirname(os.path.abspath(__file__))
         print(f'BASE_PATH: {BASE_PATH}')
 
@@ -67,11 +67,11 @@ class BankService:
                 pass
             
             elif menuNum == bank_config.NEW_ACCOUNT:
-                self.accounts = self.load_accounts()   # 과정을 누적해서 저장하고 불러옴 load 
-                if session.getSigninedMemberId() not in self.accounts:
+                self.accounts = self.load_accounts()   # 최신데이터를 불러옴  
+                if session.getSigninedMemberId() not in self.accounts:  # if not in 구조 : 없으면 빈 방부터
                     self.accounts[session.getSigninedMemberId()] = {}
 
-                MyAccounts = self.accounts[session.getSigninedMemberId()]
+                MyAccounts = self.accounts[session.getSigninedMemberId()]  # 이 브릿지 부분이 나에겐 핵심일지도 
                 MyAccounts[str(uuid.uuid4())] = {           # UUID, str castiong 
                         'balance' : 0,
                         # 'password': '',
@@ -104,3 +104,9 @@ if __name__ == '__main__':
 # 컴퓨터 시스템에서 데이터를 식별하기 위해 사용하는 '전 세계에서 유일무이한, 
 # 절대 겹치지 않는 고유 번호'를 만드는 표준 약속
 # UUID는 보통 아래와 같이 32개의 16진수와 4개의 하이픈(-)으로 이루어진 36자리의 문자열
+
+# 클래스 안에서는 철저하게 "내 것(나의 데이터)과 내 능력(나의 기능)"을 쓴다
+
+# self.accounts["gildong"]["UUID-1234"] = { 'balance': 0, ... }
+
+# "키값을 단계별로 설정해서 중첩을 만든다"
