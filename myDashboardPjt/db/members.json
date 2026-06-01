@@ -1,0 +1,34 @@
+{
+    "chanho": {
+        "mId": "chanho",
+        "mPw": "1234",
+        "mMail": "chanho@naver.com",
+        "mPhone": "010-3333-4444",
+        "mRegDate": "2026-06-01 14:08:50",
+        "mModDate": "2026-06-01 14:08:50"
+    },
+    "saeri": {
+        "mId": "saeri",
+        "mPw": "1234",
+        "mMail": "saeri@gmail.com",
+        "mPhone": "010-5555-6666",
+        "mRegDate": "2026-06-01 14:09:51",
+        "mModDate": "2026-06-01 14:09:51"
+    },
+    "jjajjang": {
+        "mId": "jjajjang",
+        "mPw": "1234",
+        "mMail": "jjajjang@naver.com",
+        "mPhone": "010-7777-8888",
+        "mRegDate": "2026-06-01 14:25:25",
+        "mModDate": "2026-06-01 14:25:25"
+    },
+    "gildong": {
+        "mId": "gildong",
+        "mPw": "1234",
+        "mMail": "gildong@gmail.com",
+        "mPhone": "010-1234-5678",
+        "mRegDate": "2026-06-01 15:33:55",
+        "mModDate": "2026-06-01 15:33:55"
+    }
+}
