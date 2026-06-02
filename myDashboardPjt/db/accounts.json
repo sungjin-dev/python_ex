@@ -1,12 +1,56 @@
 {
     "gildong": {
         "0d83fb5a-8b76-426b-831b-571e5158b0f5": {
-            "balance": 0,
-            "histories": []
+            "balance": 1,
+            "histories": [
+                {
+                    "dAmount": 1,
+                    "dhistory": "아몰랑",
+                    "dRegDate": "2026-06-02 10:28:53",
+                    "dModDate": "2026-06-02 10:28:53"
+                },
+                {
+                    "wAmount": 3000,
+                    "whistory": "묻지마세요",
+                    "wRegDate": "2026-06-02 10:24:18",
+                    "wModDate": "2026-06-02 10:24:18"
+                },
+                {
+                    "dAmount": 2000,
+                    "dhistory": "길에서 주움",
+                    "dRegDate": "2026-06-02 10:11:39",
+                    "dModDate": "2026-06-02 10:11:39"
+                },
+                {
+                    "dAmount": 1000,
+                    "dhistory": "용돈",
+                    "dRegDate": "2026-06-02 10:10:35",
+                    "dModDate": "2026-06-02 10:10:35"
+                }
+            ]
         },
         "9a899784-d5d3-4038-92c5-a5cfed9852cd": {
-            "balance": 0,
-            "histories": []
+            "balance": 1299900500,
+            "histories": [
+                {
+                    "wAmount": 100000,
+                    "whistory": "ㅌ",
+                    "wRegDate": "2026-06-02 10:28:31",
+                    "wModDate": "2026-06-02 10:28:31"
+                },
+                {
+                    "dAmount": 1300000000,
+                    "dhistory": "로또당첨",
+                    "dRegDate": "2026-06-02 10:11:59",
+                    "dModDate": "2026-06-02 10:11:59"
+                },
+                {
+                    "dAmount": 500,
+                    "dhistory": "용돈",
+                    "dRegDate": "2026-06-02 10:11:03",
+                    "dModDate": "2026-06-02 10:11:03"
+                }
+            ]
         }
     }
 }
