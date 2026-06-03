@@ -1,10 +1,12 @@
-import config as root_config
 from bank import config as bank_config
 import session
 import os
 import json
-import uuid
-from util import util_time
+import login_break
+from bank import bank_account_list
+from bank import bank_new_account
+from bank import bank_deposit
+from bank import bank_withdrawal
 
 class BankService:
     def __init__(self):
@@ -49,148 +51,35 @@ class BankService:
         return False
 
     def run(self):
-
-        if session.getSigninedMemberId() == '':
-            print('Please SIGN-IN!!')
-            return    
+        login_break.commition()   
 
         flag = True
         while flag:
 
-            if self.isMyAccount():      # if True: 이렇게만 돼도 조건문 통과됨. 
+            if self.isMyAccount():     
                 menuNum = int(input('1.ACCOUNT-LIST   2.NEW-ACCOUNT   3.DEPOSIT   4.WITHDRAWAL    99.SYSTEM-OUT '))
-
             else:
                 print('No account yet!!')    
                 menuNum = int(input(' 2.NEW-ACCOUNT     99.SYSTEM-OUT '))
 
             if menuNum == bank_config.ACCOUNT_LIST:
-                self.accounts = self.load_accounts()
-                MyAccounts = self.accounts[session.getSigninedMemberId()]
-
-                for idx, MyAccount in enumerate(MyAccounts.keys()): 
-                    print('=' * 80)
-                    print(f'[{idx + 1}]: {MyAccount}: {MyAccounts[MyAccount]["balance"]}')
-                    print('-' * 80)
-                    print('날짜/시간 \t\t 내역 \t\t\t 입금 \t\t 출금')
-                    for history in MyAccounts[MyAccount]['histories']:
-                        if 'dAmount' in history:
-                            print(f'{history["dRegDate"]} \t {history["dhistory"]} \t\t\t {history["dAmount"]}')
-                        else: 
-                            print(f'{history["wRegDate"]} \t {history["whistory"]} \t\t\t\t\t {history["wAmount"]}')
-                    print()        
+                bank_account_list.AccountList().list()   
 
             elif menuNum == bank_config.NEW_ACCOUNT:
-
-                self.accounts = self.load_accounts()   # 최신데이터를 불러옴  
-
-                if session.getSigninedMemberId() not in self.accounts:  # if not in 구조 : 없으면 빈 방부터
-                    self.accounts[session.getSigninedMemberId()] = {}
-
-                MyAccounts = self.accounts[session.getSigninedMemberId()]  # 브릿지. 새로운 중첩딕셔너리를 변수로 담아냄
-                
-                MyAccounts[str(uuid.uuid4())] = {           # UUID, str castiong 
-                        'balance' : 0,
-                        # 'password': '',
-                        'histories' : []
-                } 
-
-                self.save_accounts(self.accounts)  
-                print('NEW-ACCOUNT SUCCESS')
-
-                if root_config.DEV_MOD:
-                    print(f'self.load_accounts: {self.load_accounts()}')
+                bank_new_account.NewAccount().addtionalAcc()
 
             elif menuNum == bank_config.DEPOSIT:
-                self.accounts = self.load_accounts()    # 1단계 최신정보 불러오기
-                MyAccounts = self.accounts[session.getSigninedMemberId()]  # 2단계 내꺼만 빼오기 
+                bank_deposit.AccDeposit().deposit()
 
-                print('\nMy Accounts-------------------------------------------------')
-                for idx, account in enumerate (MyAccounts.keys()):   # 번호를 매기고 싶다면 enumerate를 사용하자
-                    print(f'[{idx+1}]: {account}')
-                print('------------------------------------------------------------\n')
-
-                while True:
-                    depositAccountNumber = input('Enter deposit account number: ')
-                    if depositAccountNumber not in MyAccounts: 
-                        print('The account was not found!!')
-                        print('\nMy Accounts-------------------------------------------------')
-                        for idx, account in enumerate (MyAccounts.keys()):   # 번호를 매기고 싶다면 enumerate를 사용하자
-                            print(f'[{idx+1}]: {account}')
-                        print('------------------------------------------------------------\n')
-                    else:
-                        break    
-
-                depositAmount = int(input('Enter deposit amount: '))
-                depositHistory = input('Enter deposit history: ')
-                deposit = {
-                    'dAmount': depositAmount,
-                    'dhistory': depositHistory,
-                    'dRegDate': util_time.getCurrentDateTime(),
-                    'dModDate': util_time.getCurrentDateTime()
-                }
-
-                MyAccounts[depositAccountNumber]['balance'] += depositAmount
-                MyAccounts[depositAccountNumber]['histories'].insert(0, deposit) 
-                # 굳이 apppend보다는 reverse()할 필요가 없는  insert가 좋음 
+            elif menuNum == bank_config.WITHDRAWAL:         
+                bank_withdrawal.WithdrawalAcc().withdrawal()
                 
-                self.save_accounts(self.accounts)
-                print('DEPOSIT SUCCESS!!')
-
-                if root_config.DEV_MOD:
-                    print(f'self.load_account(): {self.load_accounts()}')
-
-            elif menuNum == bank_config.WITHDRAWAL:
-                self.accounts = self.load_accounts()    # 1단계 최신정보 불러오기
-                MyAccounts = self.accounts[session.getSigninedMemberId()]  # 2단계 내꺼만 빼오기 
-
-                print('\nMy Accounts-------------------------------------------------')
-                for idx, account in enumerate (MyAccounts.keys()):   # 번호를 매기고 싶다면 enumerate를 사용하자
-                    print(f'[{idx+1}]: {account}')
-                print('------------------------------------------------------------\n')
-
-                while True:
-                    withdrawalAccountNumber = input('Enter withdrawal account number: ')
-                    if withdrawalAccountNumber not in MyAccounts: 
-                        print('The account was not found!!')
-                        print('\nMy Accounts-------------------------------------------------')
-                        for idx, account in enumerate (MyAccounts.keys()):   # 번호를 매기고 싶다면 enumerate를 사용하자
-                            print(f'[{idx+1}]: {account}')
-                        print('------------------------------------------------------------\n')
-                    else:
-                        break    
-
-                withdrawalAmount = int(input('Enter withdrawal amount: '))
-                withdrawalHistory = input('Enter withdrawal history: ')
-                withdrawal = {
-                    'wAmount': withdrawalAmount,
-                    'whistory': withdrawalHistory,
-                    'wRegDate': util_time.getCurrentDateTime(),
-                    'wModDate': util_time.getCurrentDateTime()
-                }
-
-                if withdrawalAmount > MyAccounts[withdrawalAccountNumber]['balance']:
-                    print('Error! Check Balance!!')
-                else: 
-                    MyAccounts[withdrawalAccountNumber]['balance'] -= withdrawalAmount
-                    MyAccounts[withdrawalAccountNumber]['histories'].insert(0, withdrawal) 
-                    # 굳이 apppend보다는 reverse()할 필요가 없는  insert가 좋음 
-                    
-                    self.save_accounts(self.accounts)
-                    print('WITHDRAWAL SUCCESS!!')
-
-                if root_config.DEV_MOD:
-                    print(f'self.load_account(): {self.load_accounts()}')
-
             elif menuNum == bank_config.SERVICE_OUT:
                 flag = False
-
 
 if __name__ == '__main__':
     bankService = BankService()
     bankService.run()
-
-# python -m bank.bank_service 
 
 # UUID(Universally Unique Identifier, 범용 고유 식별자)는 
 # 컴퓨터 시스템에서 데이터를 식별하기 위해 사용하는 '전 세계에서 유일무이한, 

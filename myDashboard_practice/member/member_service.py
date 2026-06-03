@@ -7,54 +7,33 @@ import session
 from member import member_input
 from member import member_login
 from member import member_modify
-
+from member import member_delete
 
 class MemberService:
     def __init__(self):
-        self.members = {}   # 틀만 제공
+        self.members = {}   
         self.init_database()
 
-    # 회원 가입 기능
     def sign_up(self):
         member_input.InputMemberData().collectUserdata()
 
-    # 회원 로그인 기능
     def sign_in(self):
         member_login.LoginSystem().login_in()    
 
-    # 회원 로그아웃 기능
     def sign_out(self):
-        session.setSigninedMemberId()  # uId = '' 이게 기본값이라서 
+        session.setSigninedMemberId()  
         print('SIGN-OUT SUCCESS!!')
 
-    # 회원 정보수정 기능
     def modify(self):
         member_modify.ModifymemberData().modifying()
-        
-    # 회원 탈퇴 기능
+    
     def delete(self):
+        member_delete.DeleteUser().delete()
         
-        confirm = input('정말 탈퇴하시겠습니까? [Y] or [N]')
-
-        if confirm == 'Y':
-            self.members = self.load_members()
-            del self.members[session.getSigninedMemberId()]
-            self.save_members(self.members)
-            session.setSigninedMemberId()
-            print('DELETE SUCCESS')
-
-        if root_config.DEV_MOD:
-            print(f'self.load_members(): {self.load_members()}')
-
     def run(self):
-
         flag = True
-
         while flag:
-
-            # if session.signinedMemberId == '':
             if session.getSigninedMemberId() == '':
-
                 menuNum = int(input('1. SIGN-UP  2.SIGN-IN   99.SERVICE-OUT ')) 
             else:
                 menuNum = int(input('3.SIGN-OUT  4.MODIFY  5. DELETE  99.SERVICE-OUT ')) 
@@ -78,22 +57,16 @@ class MemberService:
                 flag = False    
                 
     def init_database(self):  # 파일을 만들면서 빈 딕셔너리 만들어줘
-        # 에러가 나지 않도록 폴더의 '절대 경로'를 추적
         # 현재 파일 위치       절대값 경로
         BASE_PATH = os.path.dirname(os.path.abspath(__file__))
         print(f'BASE_PATH: {BASE_PATH}')
-
         # 프로젝트 루트 경로
         ROOT_DIR = os.path.dirname(BASE_PATH)
         print(f'ROOT_DIR : {ROOT_DIR}')
-  
         #db/memebers.json                    폴더명   파일명
-        self.dbFile = os.path.join(ROOT_DIR, 'db', 'members.json')
+        self.dbFile = os.path.join(ROOT_DIR, 'db', 'members.json') # os.path.join 윈도우인지 맥인지 스스로 파악
         print(f'self.dbFile: {self.dbFile}')  # 확인용 디버깅 코드 
         # 3개의 조각을 줄 테니 완벽한 파일 주소로 만들어줘 C:\myDashboardPjt\db\members.json
-        # os.path.join 윈도우인지 맥인지 스스로 파악
-
-        # 파일 존재 여부 확인
         if not os.path.exists(self.dbFile):   # os.path.exists() : True or False 반환 
             self.save_members(self.members)
         else:
@@ -111,10 +84,8 @@ if __name__ == "__main__":
     memberService = MemberService()
     memberService.run()
 
-# python -m member.member_service
-
 # cd .\myDashboardPjt\
-# python -m member.member_service
+
 
 '''
 json.dump(): 파이썬 딕셔너리 ➡️ 파일로 내보내기 (포장해서 창고에 넣기)
