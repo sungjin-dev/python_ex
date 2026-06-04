@@ -92,16 +92,3 @@ json.dump(): 파이썬 딕셔너리 ➡️ 파일로 내보내기 (포장해서 
 
 json.load(): 파일 ➡️ 파이썬 딕셔너리로 가져오기 (창고에서 꺼내오기)
 '''
-
-# mId = input('Input new member ID: ')
-#         mPw = input('Input new member PW: ')
-#        # 시작하자마자 창고에서 최신 데이터를 새로 불러옵니다
-#         self.members = self.load_members()
-#         if mId in self.members and self.members[mId]['mPw'] == mPw:
-#             print('MEMBER SIGN-IN SUCCESS!!')
-#             session.signinedMemberId = mId
-#             if root_config.DEV_MOD:
-#                 print(f'session.signinedMemberId: {session.signinedMemberId}')
-#             return
-        
-#         print('MEMBER SIGN-IN FAIL!!') 
