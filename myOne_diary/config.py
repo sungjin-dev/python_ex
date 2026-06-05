@@ -1,0 +1,3 @@
+MEMBER = 1
+DIARY = 2
+SYSTEM_OUT = 99
