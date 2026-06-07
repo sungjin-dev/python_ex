@@ -1,61 +1,35 @@
-import session
-import os
-import json
 from diary import config as diary_config
 from diary import diary_write
 from diary import diary_read
 from diary import diary_delete
 from diary import diary_update
-from diary import diary_opencv
+
+import dbfile_manager
 
 class DiaryService:
     def __init__(self):
-        self.diaries = {}
-        self.init_database() 
+        self.fileName = "diary.json"
+        self.diarydict = {}  
 
-    def init_database(self):
-    
-        BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-
-        ROOT_DIR = os.path.dirname(BASE_PATH)
-
-        self.dbFile = os.path.join(ROOT_DIR, 'db', 'diaries.json')
-
-        if not os.path.exists(self.dbFile):       
-            self.save_diaries(self.diaries) 
-        else:
-            self.diaries = self.load_diaries()   
-     
-    def save_diaries(self, diaries):    
-            with open(self.dbFile, 'w', encoding= 'utf-8') as f:
-                json.dump(diaries, f, ensure_ascii = False, indent = 4)  
-   
-    def load_diaries(self):   
-            with open(self.dbFile, 'r' , encoding = 'utf-8') as f:
-                return json.load(f)
-            
-    def isMyMemos(self):
-        allMemos = self.load_diaries()
-        if session.loginedMember() in allMemos:
-            return True             
-        return False  
+        self.diarydict = dbfile_manager.load_data(self.fileName, self.diarydict)
 
     def run(self):
         
         flag = True
         while flag:
-            selectedNum = int(input('1. Write  2. Read 3. Delete , 4. Update, 5. Show, 99. System-out'))
+            selectedNum = int(input('1. Write  2. Read,  3. Delete,  4. Update,  99. System-out  ' ))
 
             if selectedNum == diary_config.WRITE:
-                diary_write.WriteDiary().write()
+                diary_write.write(self.diarydict)
+                dbfile_manager.save_data(self.fileName, self.diarydict)
             elif selectedNum == diary_config.READ:
-                diary_read.ReadDiary().read()
+                diary_read.pictureDiary()
             elif selectedNum == diary_config.DELETE:
-                diary_delete.DeleteDiary().delete()
+                diary_delete.delete(self.diarydict)
+                dbfile_manager.save_data(self.fileName, self.diarydict)
             elif selectedNum == diary_config.UPDATE:
-                diary_update.UpdatingMemo().update()
-            elif selectedNum == diary_config.SHOW:
-                diary_opencv.Opencv().diaryOpencv()
+                diary_update.update(self.diarydict)
+                dbfile_manager.save_data(self.fileName, self.diarydict)   
             elif selectedNum == diary_config.SYSTEM_OUT:
                 print('종료합니다.')
                 flag = False

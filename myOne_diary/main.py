@@ -6,7 +6,7 @@ def main():
 
     flag = True
     while flag:   
-        selectedUserNum = int(input('1. Member, 2.Diary , 99.System-Out '))
+        selectedUserNum = int(input('1. Member, 2.Diary , 99.System-Out '  ))
 
         if selectedUserNum == root_config.MEMBER:
             member_service.MemberService().run()

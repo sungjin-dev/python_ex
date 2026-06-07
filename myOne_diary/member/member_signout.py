@@ -1,13 +1,10 @@
 import session
+  
+def signOut():
 
-class SignOut():
-    def __init__(self):
-      self.memberdict = {}
-
-    def signOut(self):
-
-        if session.getloginedMember() == True:
-            session.signinedMember() == ''
-        else:
-            print('로그인한 계정이 없습니다.')
-            return
+    if session.getloginedMember() == True:
+        session.signinedMember('')
+        print('로그아웃되었습니다.')
+    else:
+        print('로그인한 계정이 없습니다.')
+        

@@ -4,33 +4,37 @@ from member import member_signIn
 from member import member_signout
 from member import member_modify
 from member import member_delete
+import dbfile_manager
 import session
-import os
-import json
 
 class MemberService:
     def __init__(self):
-        self.memberdict = {}   
-        self.init_database()
+        self.fileName = "members.json"
+        self.memberdict = {}  
+
+        self.memberdict = dbfile_manager.load_data(self.fileName, self.memberdict)
 
     def sign_up(self):
-        member_signup.Signup().signup()
+        member_signup.signUp(self.memberdict)
+        dbfile_manager.save_data(self.fileName, self.memberdict)
     def sign_in(self):
-        member_signIn.SignIn().signIn()
+        member_signIn.signIn(self.memberdict)
     def sign_out(self):
-        member_signout.SignOut().signOut()
+        member_signout.signOut()
     def modify_info(self):
-        member_modify.Modify().modify()
+        member_modify.modify(self.memberdict)
+        dbfile_manager.save_data(self.fileName, self.memberdict)
     def delete_info(self):
-        member_delete.Delete().delete()
+        member_delete.delete(self.memberdict)
+        dbfile_manager.save_data(self.fileName, self.memberdict)
 
     def run(self):
 
         flag = True
-        while flag:  
 
+        while flag:  
             if session.getloginedMember() == '':
-                selectedUserNum = int(input('1. Sign-Up, 2.Sign-In 99.System-Out  '))
+                selectedUserNum = int(input('1. Sign-Up, 2.Sign-In  99.System-Out  '))
             else:
                 selectedUserNum = int(input('3.Sign-out, 4.Modify 5.Delete, 99.System-Out  '))
 
@@ -50,27 +54,6 @@ class MemberService:
                 return
             else:
                 print('오타입니다. 다시 입력해주세요.')
-
-    def init_database(self):  
-      
-        BASE_PATH = os.path.dirname(os.path.abspath(__file__))
-     
-        ROOT_DIR = os.path.dirname(BASE_PATH)
-    
-        self.dbFile = os.path.join(ROOT_DIR, 'db', 'members.json') 
-        
-        if not os.path.exists(self.dbFile):   
-            self.save_members(self.memberdict)
-        else:
-            self.memberdict = self.load_members() 
-    
-    def save_members(self, members):   
-        with open(self.dbFile, 'w', encoding= 'utf-8') as f:
-            json.dump(members, f, ensure_ascii = False, indent = 4)   
-
-    def load_members(self):     
-        with open(self.dbFile, 'r' , encoding = 'utf-8') as f:
-            return json.load(f)
 
     if __name__ == "__main__":
         run()
