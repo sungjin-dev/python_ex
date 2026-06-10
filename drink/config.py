@@ -1,0 +1,3 @@
+MENU = 1
+ORDER = 2
+SYSTEM_OUT = 99

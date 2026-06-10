@@ -16,7 +16,6 @@ class customerService:
         database.save_data(self.fileName, self.customerdict)
     def sign_in(self):
         pass
-
     def modifyinfo(self):
         customer_modify.modify(self.customerdict)
         database.save_data(self.fileName, self.customerdict)
@@ -30,9 +29,9 @@ class customerService:
 
         while flag:
 
-            selectedNum = int(input('1. sign-up 2. sign-in  3. modify 4. delete 0. back to main'))  
+            selectedNum = int(input('1. Sign-Up 2. Sign-In  3. Modify 4. Delete 0. back to main'))  
 
-            if  selectedNum == customer_config.RESISTER:
+            if  selectedNum == customer_config.SIGN_UP:
                 self.sign_up() 
             elif  selectedNum == customer_config.INFOCHECK:
                 self.sign_in()  
