@@ -1,5 +1,9 @@
 import database
 from order import config as order_config
+from order import order_register
+from order import order_payment
+from order import order_check
+from order import order_modify
 
 class OrderService:
     def __init__(self, menuInfos):
@@ -7,10 +11,19 @@ class OrderService:
         self.menudict = menuInfos
         self.orders = {}
 
-        self.menudict = database.save_data(self.filename, self.menudict)  
+        self.menudict = database.save_data(self.filename, self.orders)  
 
     def orderRegister(self):
-        pass    
+        order_register.orderRegister(self.menudict, self.orders)
+        database.save_data(self.filename, self.orders)
+    def totalPayment(self):
+        order_payment.payment(self.menudict, self.orders)  
+        database.save_data(self.filename, self.orders)
+    def orderCheck(self):
+        order_check.orderCheck(self.orders)
+    def orderModify(self):  
+        order_modify.modify(self.orders)
+        database.save_data(self.filename, self.orders)
 
     def run(self):
 

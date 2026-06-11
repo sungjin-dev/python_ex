@@ -13,7 +13,7 @@ class MenuService:
         self.menudict = database.save_data(self.filename, self.menudict)
 
     def register(self):
-        menu_register.menuResister(self.menudict)
+        menu_register.registerMenu(self.menudict)
         database.save_data(self.filename, self.menudict)
     def checkOrder(self):
         menu_check.menuInfos(self.menudict)
