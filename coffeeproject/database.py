@@ -19,6 +19,8 @@ def save_data(fileName, dict):
 
         json.dump(dict, f, ensure_ascii = False, indent = 4)  
 
+    return dict    
+
 def load_data(fileName, dict): 
 
     dbFile = setFilePath(fileName) 

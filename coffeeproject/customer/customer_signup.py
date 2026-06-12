@@ -13,13 +13,11 @@ def signUp(customerdict):
         return
     
     cPw = input('PW를 입력하세요.')
-    # cTier = input('등급을 입력하세요.') # 이건 외부에서 만들어서 해보기 
     cPhone = input('PHONE를 입력하세요.')
 
     customers = {
         'cId':cId,
         'cPw':cPw,
-        # 'cTier':cTier,
         'cPhone':cPhone,
     }
    
