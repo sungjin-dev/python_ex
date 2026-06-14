@@ -3,6 +3,7 @@ import database
 from customer import customer_signup
 from customer import customer_modify
 from customer import customer_delete
+from customer import customer_signin
 
 class customerService:
     def __init__(self):
@@ -15,7 +16,7 @@ class customerService:
         customer_signup.signUp(self.customerdict)
         database.save_data(self.fileName, self.customerdict)
     def sign_in(self):
-        pass
+        customer_signin.sign_in(self.customerdict)
     def modifyinfo(self):
         customer_modify.modify(self.customerdict)
         database.save_data(self.fileName, self.customerdict)
@@ -28,8 +29,12 @@ class customerService:
         flag = True
 
         while flag:
-
-            selectedNum = int(input('1. Sign-Up 2. Sign-In  3. Modify 4. Delete 0. back to main'))  
+                
+            try:    
+                selectedNum = int(input('1. Sign-Up 2. Sign-In  3. Modify 4. Delete 0. back to main'))  
+            except ValueError:
+                print('숫자만 입력해주세요.')
+                continue
 
             if  selectedNum == customer_config.SIGN_UP:
                 self.sign_up() 

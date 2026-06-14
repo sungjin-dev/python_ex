@@ -1,30 +1,60 @@
 from menu import menu_service
 from customer import customer_service
+from order import order_service
+from boss import boss_service
 import config as root_config
+import session
 
 def main():
+
+    mService = menu_service.menuService()
+
+    oService = order_service.OrderService(mService.menudict)
+
+    cService = customer_service.customerService()
+
+    bService = boss_service.Management()
 
     flag = True
 
     while flag:
-        selectedNum = int(input('1.mene 2. order 3.customer 4.coupon 5.sale 99. system-out '))
+
+        try:
+            selectedNum = int(input('1.menu 2.order 3.customer 4.coupon 5.sale 99.system-out : '))
+        except ValueError:
+            print('숫자만 입력해주세요.')
+            continue
 
         if selectedNum == root_config.MENU:
-            menu_service.menuService().run()
+
+            bId = session.getloginedboss()
+            
+            if not bId:  
+                print('관리자만 접근 가능합니다.')
+                
+                continue 
+
+            print(f'{bId} 관리자님 환영합니다.')
+          
+
+            mService.run()
+
         elif selectedNum == root_config.ORDER:
-            pass
-            # order_service.orderService().run()
+            oService.run()
+
         elif selectedNum == root_config.CUSTOMER:
-            customer_service.customerService().run()
-        elif selectedNum == root_config.COUPON:
-            pass
-            # coupon_service.couponService().run()
-        elif selectedNum == root_config.SALES:
-            pass
-            # sales_service.salesService().run()
+            cService.run()
+
+        elif selectedNum == root_config.MANAGER:
+            bService.run()
+
+        # elif selectedNum == root_config.COUPON:
+        # elif selectedNum == root_config.SALES:
         elif selectedNum == root_config.SYSTEM_OUT:
             flag = False
 
 if __name__ == "__main__":
     # customer_service.customerService().run()
-    menu_service.menuService().run()
+    # menu_service.menuService().run()
+    main()
+

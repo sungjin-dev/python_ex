@@ -27,8 +27,11 @@ class menuService:
         flag = True
 
         while flag:
-
-            selectedNum = int(input('1. 메뉴 등록, 2. 메뉴 조회, 3.메뉴 수정, 4.메뉴 삭제, 99.종료' ))
+            try:    
+                selectedNum = int(input('1. 메뉴 등록, 2. 메뉴 조회, 3.메뉴 수정, 4.메뉴 삭제, 99.종료' ))
+            except ValueError:
+                print('숫자만 입력해주세요.')
+                continue
     
             if selectedNum == memu_config.MENUREGISTER:
                 self.register()  

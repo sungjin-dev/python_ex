@@ -23,8 +23,7 @@ def signUp(customerdict):
    
     customerdict[cId] = customers
 
-    session.getloginedcustomer(cId)
+    session.setloginedcustomer(cId)
 
-    return customerdict
 
     

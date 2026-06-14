@@ -1,8 +1,18 @@
 loginedcustomer = ''
+loginedboss = ''
 
-def setloginedcustomer():
+def setloginedcustomer(cId):
     global loginedcustomer
-    loginedcustomer
+    loginedcustomer = cId
 
 def getloginedcustomer(): 
-    loginedcustomer
+    global loginedcustomer  
+    return loginedcustomer
+
+def setloginedboss(bId):
+    global loginedboss
+    loginedboss = bId  
+
+def getloginedboss():
+    global loginedboss
+    return loginedboss
