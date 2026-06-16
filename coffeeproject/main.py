@@ -2,6 +2,7 @@ from menu import menu_service
 from customer import customer_service
 from order import order_service
 from boss import boss_service
+from sales import sales_service
 import config as root_config
 import session
 
@@ -14,6 +15,8 @@ def main():
     cService = customer_service.customerService()
 
     bService = boss_service.Management()
+
+    sService = sales_service.SaleService(mService.menudict, oService.orders)
 
     flag = True
 
@@ -48,13 +51,12 @@ def main():
         elif selectedNum == root_config.MANAGER:
             bService.run()
 
-        # elif selectedNum == root_config.COUPON:
-        # elif selectedNum == root_config.SALES:
+        elif selectedNum == root_config.SALES:
+            sService.run()
+
         elif selectedNum == root_config.SYSTEM_OUT:
             flag = False
 
 if __name__ == "__main__":
-    # customer_service.customerService().run()
-    # menu_service.menuService().run()
     main()
 

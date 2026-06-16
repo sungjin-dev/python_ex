@@ -1,9 +1,11 @@
 import session
 
-def totalSales(menudict, orders):
-    grand_total = 0
+def totalSales(sales):
 
-    for cId, customer_orders in orders.items():
+    total_revenue = 0
+    
+    total_revenue = sum(value['tPay'] for value in sales.values())
         
-        for oName, order_info in customer_orders.items():
-            oCount = order_info['oCount']
+    print(f'현재까지의 총 매출액은 {total_revenue}원 입니다.')
+    return total_revenue
+    

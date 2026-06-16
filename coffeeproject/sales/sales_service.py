@@ -30,13 +30,9 @@ class SaleService:
                 continue
             
             if selectedNum == sales_config.INPUT_ORDER:
-                self.orderRegister()  
+               self.Payment() 
             elif selectedNum == sales_config.ORDER_STATUS:
-                self.orderCheck()
-            elif selectedNum == sales_config.ORDER_MODIFY:
-                self.orderModify()
-            elif selectedNum == sales_config.FINAL_PAYMENT:
-                self.totalPayment()
+                self.salesNow()
             elif selectedNum == sales_config.SYSTEM_OUT:
                 flag = False
             else:

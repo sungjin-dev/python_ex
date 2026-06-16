@@ -53,4 +53,3 @@ def salesCount(menudict, orders, sales):
     print('결제가 완료되었습니다.')
 
 
-#.values()
