@@ -29,8 +29,11 @@ class Management:
         flag = True
 
         while flag:
-
-            selectedNum = int(input('1. Sign-Up 2. Sign-In  3. Modify 4. Delete 0. back to main'))  
+            try:
+                selectedNum = int(input('1. Sign-Up 2. Sign-In  3. Modify 4. Delete 0. back to main'))  
+            except ValueError:
+                print('숫자만 입력해주세요.')
+                continue
 
             if  selectedNum == boss_config.SIGN_UP:
                 self.sign_up() 

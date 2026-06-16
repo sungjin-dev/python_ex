@@ -26,7 +26,7 @@ class OrderService:
         flag = True
         while flag:
             try:
-                selectedNum = int(input('1. 주문 입력, 2. 주문 현황, 3. 주문 수정, 4. 결제금액, 99. 종료 : '))
+                selectedNum = int(input('1. 주문 입력, 2. 주문 현황, 3. 주문 수정, 99. 종료 : '))
             except ValueError:
                 print('숫자만 입력해주세요.')
                 continue
@@ -37,8 +37,6 @@ class OrderService:
                 self.orderCheck()
             elif selectedNum == order_config.ORDER_MODIFY:
                 self.orderModify()
-            elif selectedNum == order_config.FINAL_PAYMENT:
-                self.totalPayment()
             elif selectedNum == order_config.SYSTEM_OUT:
                 flag = False
             else:

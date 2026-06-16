@@ -10,11 +10,12 @@ class SaleService:
         self.orders = data2
         self.sales = {}
 
-        self.orders = database.load_data(self.filename, self.sales)  
+        self.sales = database.load_data(self.filename, self.sales)  
 
     def Payment(self):
         sales_counted.salesCount(self.menudict, self.orders, self.sales)
         database.save_data(self.filename, self.sales)
+        
     def salesNow(self):
         sales_check.totalSales(self.sales)  
         database.save_data(self.filename, self.orders)
@@ -24,7 +25,7 @@ class SaleService:
         flag = True
         while flag:
             try:
-                selectedNum = int(input('1. 매출 계산, 2. 매출 현황, 99. 종료 : '))
+                selectedNum = int(input('1. 주문 계산, 2. 매출 현황, 99. 종료 : '))
             except ValueError:
                 print('숫자만 입력해주세요.')
                 continue

@@ -8,9 +8,6 @@ def orderRegister(menudict, orders):
     if not cId:
         print('로그인 부터 해주세요.')
         return
-    
-    for item in menudict.values():
-        print(f"메뉴리스트: {item['mName']}")
 
     while True:
 
@@ -22,11 +19,19 @@ def orderRegister(menudict, orders):
 
         elif selectedNum == 1:
 
+            availableMenus = []
+
+            for item in menudict.values():
+
+                print(f"메뉴명: {item['mName']}, 가격: {item['mPrice']}")
+
+                availableMenus.append(item['mName'])
+
             oName = input('주문하고 싶은 음식를 입력하세요.')
 
-            if oName not in menudict:
+            if oName not in availableMenus:
                 print('없는 메뉴거나 오타입니다.')
-                return
+                continue
  
             try:
                 oCount = int(input('수량을 숫자로 입력하세요: '))

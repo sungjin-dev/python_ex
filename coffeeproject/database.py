@@ -35,7 +35,4 @@ def load_data(fileName, data):
         return json.load(f)
     
 
-    
-    # dict() 딕셔너리를 만들어라는 내장함수 주의 매개변수 명으로는 ~ :dict 이런식으로 할 것
-
  

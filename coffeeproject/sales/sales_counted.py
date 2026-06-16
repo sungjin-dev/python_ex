@@ -48,8 +48,10 @@ def salesCount(menudict, orders, sales):
    
     sales[orderId] = paypal
 
+    print(f'{totalPayment}원 결제가 완료되었습니다.')
+
     del orders[cId]
 
-    print('결제가 완료되었습니다.')
+
 
 

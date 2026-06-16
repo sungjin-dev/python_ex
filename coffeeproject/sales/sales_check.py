@@ -1,5 +1,3 @@
-import session
-
 def totalSales(sales):
 
     total_revenue = 0
