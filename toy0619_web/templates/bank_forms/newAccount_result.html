@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BANK SERVICE</title>
+
+    <link href="{{url_for('static', filename='css/bank_css/common.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bank_css/index.css')}}" rel="stylesheet">
+
+     <script src="{{url_for('static', filename='js/bank.js')}}"></script>
+
+</head>
+<body>
+    
+    {% include 'include/header.html' %}
+    {% include 'include/bank_nav.html' %}
+
+
+    <article id="newAccount_wrap">
+        <div class="newAccount_result">
+                <h2> NEW ACCOUNT REGISTERED!!</h2> 
+
+                <div class="account_copy_box">
+                    <strong class="account_uuid">[{{ aNum }}]</strong>    <!-- '변수' 이렇게 문자열로 보내기 -->
+                    <button class="btn_copy" onclick="copyAccountNum('{{ aNum }}')">계좌번호 복사하기</button>
+                </div>                                                                             
+
+    </article>
+
+</body>
+</html>
+
+<!-- 파이썬이 render_template을 실행하는 순간, 
+파이썬의 번역기(Jinja2)가 문서를 위에서부터 아래로 훑고 지나가면서 
+HTML 영역이든 <script> 영역이든 상관하지 않고, 
+문서 전체에 있는 모든 {{ aNum }}을 찾아내서 방금 만든 진짜 계좌번호로 싹 다 바꿔치기 합니다. -->

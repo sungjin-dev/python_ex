@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BANK SERVICE</title>
+
+    <link href="{{url_for('static', filename='css/bank_css/common.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bank_css/index.css')}}" rel="stylesheet">
+
+    <script src="{{url_for('static', filename='js/bank.js')}}"></script>
+
+</head>
+<body>
+
+    {% include 'include/header.html' %}
+    {% include 'include/bank_nav.html' %}
+
+
+    <article id="withdrawal_wrap">
+
+        {% if result == 'fail' %}
+        <p class="withdrawal_result">
+            로그인부터 해주세요
+        </p>
+        {% endif %}
+
+        <div class="withdrawal_form">
+            <form action="/bank/withdrawal_confirm"  method="post" name="withdrawal_form">
+                <input class="input_basic" type="text" name="aNum" placeholder="Input Account Num">
+                <br>
+                <input class="input_basic" type="password" name="aPw" placeholder="Input Account PW">
+                <br>
+                <input class="input_basic" type="text" name="wAmount" placeholder="Input withdrawal Amount ">
+                <br>
+                <input class="input_button_basic_130" type="button" value="withdrawal" onclick="withdrawalForm();">
+                <input class="input_button_basic_130" type="reset" value="RESET">
+            </form>
+        </div>
+    </article>
+
+
+
+</body>
+</html>

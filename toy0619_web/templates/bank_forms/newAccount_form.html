@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BANK SERVICE</title>
+
+    <link href="{{url_for('static', filename='css/bank_css/common.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bank_css/index.css')}}" rel="stylesheet">
+
+    <script src="{{url_for('static', filename='js/bank.js')}}"></script>
+
+</head>
+<body>
+
+    {% include 'include/header.html' %}
+    {% include 'include/bank_nav.html' %}
+
+
+    <article id="newAccount_wrap">
+        <div class="newAccountForm">
+            <form action="/bank/newAccount_confirm"  method="post" name="newAccountForm">
+                <input class="input_basic" type="text" name="aNum" value="{{ aNum }}" readonly>
+                <br>
+                <input class="input_basic" type="password" name="aPw" placeholder="Input new Account PW">
+                <br>
+                <input class="input_button_basic_130" type="button" value="NEW ACCOUNT" onclick="submitAccountForm();">
+                <input class="input_button_basic_130" type="reset" value="RESET">
+            </form>
+        </div>
+    </article>
+
+</body>
+</html>
+
+     
+            
+            <br>
+         

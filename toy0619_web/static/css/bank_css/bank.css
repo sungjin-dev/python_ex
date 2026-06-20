@@ -1,0 +1,97 @@
+/* ARTICLE START */
+/* newAccount */
+#newAccount_wrap .newAccount_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#newAccount_wrap .newAccount_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* ARTICLE END */
+
+
+/* DEPOSIT */
+#deposit_wrap .deposit_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#deposit_wrap .deposit_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#deposit_wrap p.deposit_result {
+    text-align: center;
+}
+
+
+/* MODIFY */
+#accModify_wrap .accModify_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#accModify_wrap .accModify_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+
+/* DELETE */
+#accDelete_wrap .accDelete_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#accDelete_wrap .accDelete_result {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* ACCOUNT LIST */
+
+#account_list_wrap .account_list_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#newAccount_wrap .account_result_container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#newAccount_wrap .account_copy_box {
+    margin: 20px 0;
+    display: block; 
+    border-radius: 5px;
+}
+
+#newAccount_wrap .account_uuid {
+    font-size: 20px;
+}
+
+#newAccount_wrap .btn_copy {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+/* ARTICLE END */
+
+
+
+

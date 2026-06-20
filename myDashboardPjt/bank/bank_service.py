@@ -67,7 +67,7 @@ class BankService:
             if menuNum == bank_config.ACCOUNT_LIST:
                 self.accounts = self.load_accounts()
                 MyAccounts = self.accounts[session.getSigninedMemberId()]
-
+                
                 for idx, MyAccount in enumerate(MyAccounts.keys()): 
                     print('=' * 80)
                     print(f'[{idx + 1}]: {MyAccount}: {MyAccounts[MyAccount]["balance"]}')
