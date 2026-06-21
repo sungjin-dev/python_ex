@@ -5,7 +5,7 @@
     <title>BANK SERVICE</title>
 
     <link href="{{url_for('static', filename='css/bank_css/common.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/bank_css/index.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bank_css/bank.css')}}" rel="stylesheet">
 
      <script src="{{url_for('static', filename='js/bank.js')}}"></script>
 
@@ -22,7 +22,7 @@
 
                 <div class="account_copy_box">
                     <strong class="account_uuid">[{{ aNum }}]</strong>    <!-- '변수' 이렇게 문자열로 보내기 -->
-                    <button class="btn_copy" onclick="copyAccountNum('{{ aNum }}')">계좌번호 복사하기</button>
+                    <button class="btn_copy" onclick="copyAccountNum('{{ aNum }}')">COPY</button>
                 </div>                                                                             
 
     </article>

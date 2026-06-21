@@ -27,8 +27,6 @@
         <a href="/member/delete_confirm">DELETE</a>
         <span class="divider">|</span>
     </div>
-    
-    {% endif %}
     {% if not request.path.startswith('/member') and not request.path.startswith('/apps') %}
     <div class="nav_wrap_apps">
         <a href="/app/bank">BANK</a>
@@ -39,6 +37,7 @@
         <span class="divider">|</span>
         <a href="/app/todolist">TODOLIST</a>
     </div>
+    {% endif %}
     {% endif %}
     
 </nav>

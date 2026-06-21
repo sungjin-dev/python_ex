@@ -286,6 +286,25 @@ def accList_view():
 
     userAccounts = accounts.get(mId, {})
 
-    return render_template('bank_forms/account_list_result.html', accounts = userAccounts)
+    account_lists = list(userAccounts.items())
+    account_lists.reverse()
+
+    return render_template('bank_forms/account_list_result.html', mId = mId, accounts = account_lists)
+
+
+# /bank/account_info/<aNum>
+@bank_bp.route('/account_info/<aNum>', methods=['GET'])
+def account_infos(aNum):
+    mId = session.get('signedId')
+    if not mId:
+        return redirect(url_for('member.signin_form'))
+    
+    accounts = load_accounts()
+    userAccounts = accounts.get(mId, {})
+   
+    if aNum not in userAccounts:
+        return render_template('bank_forms/error.html', errorMsg="ACCOUNT NOT FOUND!")
+
+    return render_template('bank_forms/account_lnfo.html', account=userAccounts[aNum])
    
        

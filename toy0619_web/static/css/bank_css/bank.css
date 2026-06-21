@@ -1,18 +1,67 @@
 /* ARTICLE START */
+
+article {
+    text-align: center;
+    margin: 50px 0;
+}
+
+article div.index img {
+    min-width: 1000px;
+    max-width: 1000px;
+}
+
+
 /* newAccount */
-#newAccount_wrap .newAccount_form {
+#newAccount_wrap .newAccount_form,
+#newAccount_wrap .newAccount_result 
+{
     width: 1000px;
     margin: 50px auto;
     text-align: center;
 }
+
 
 #newAccount_wrap .newAccount_result {
-    width: 1000px;
-    margin: 50px auto;
     text-align: center;
+    margin-top: 50px;
 }
 
-/* ARTICLE END */
+#newAccount_wrap .newAccountForm .input_basic {
+    width: 400px;
+    height: 100;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2px;
+}
+
+#newAccount_wrap .newAccountForm .input_button_basic_130 {
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 150px;
+}
+
+
+#newAccount_wrap .account_copy_box {
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+#newAccount_wrap .account_uuid {
+    font-size: 1.5em;
+    color: blue; 
+}
+
+#newAccount_wrap .btn_copy {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
 
 
 /* DEPOSIT */
@@ -32,6 +81,60 @@
     text-align: center;
 }
 
+#deposit_wrap .deposit_form .input_basic {
+    width: 400px;
+    height: 100;
+    text-align: center;
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2px;
+}
+
+#deposit_wrap .deposit_form .input_button_basic_130 {
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 150px;
+}
+
+/* WITHDRAWAL */
+
+#withdrawal_wrap .withdrawal_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#withdrawal_wrap .withdrawal_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#withdrawal_wrap p.withdrawal_form {
+    text-align: center;
+}
+
+#withdrawal_wrap .withdrawal_form .input_basic {
+    width: 400px;
+    height: 100;
+    text-align: center;
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2px;
+}
+
+#withdrawal_wrap .withdrawal_form .input_button_basic_130 {
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 150px;
+}
+
 
 /* MODIFY */
 #accModify_wrap .accModify_form {
@@ -44,6 +147,25 @@
     width: 1000px;
     margin: 50px auto;
     text-align: center;
+}
+
+
+#accModify_wrap .accModify_form .input_basic {
+    width: 400px;
+    height: 100;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2px;
+}
+
+#accModify_wrap .accModify_form .input_button_basic_130 {
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 150px;
 }
 
 
@@ -60,6 +182,25 @@
     text-align: center;
 }
 
+
+#accDelete_wrap .accDelete_form .input_basic {
+    width: 400px;
+    height: 100;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2px;
+}
+
+#accDelete_wrap .accDelete_form .input_button_basic_130 {
+    font-size: 1.1em;
+    border-radius: 10px;
+    border: 1px solid;
+    width: 150px;
+}
+
 /* ACCOUNT LIST */
 
 #account_list_wrap .account_list_form {
@@ -68,30 +209,62 @@
     text-align: center;
 }
 
-#newAccount_wrap .account_result_container {
+#account_list_wrap .account_list_table {
+    margin : 0 auto;
+    max-width: 1000px;
+    width: 80%;   
+    border-collapse: collapse;
+}
+
+#account_list_wrap .account_list_table tr,
+#account_list_wrap .account_list_table th
+{
+    padding: 15px;
+    height : 50px;
     text-align: center;
-    margin-top: 50px;
+    border-bottom: 1px solid #dadada;
+    font-size: 1.2em;
+
 }
 
-#newAccount_wrap .account_copy_box {
-    margin: 20px 0;
-    display: block; 
-    border-radius: 5px;
+#account_list_wrap .account_list_table th {
+    background-color : #FFFACD
 }
 
-#newAccount_wrap .account_uuid {
-    font-size: 20px;
+/* ACCOUNT INFO */
+
+#account_list_wrap .account_list_form {
+    width: 1000px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-#newAccount_wrap .btn_copy {
-    margin-left: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
+.account_info {
+    width: 70%; 
+    margin: 0 auto; 
+    border-collapse: collapse; 
 }
 
+.account_info th {
+    background-color : #FFFACD
+}
+
+#account_info_wrap h3 {
+    font-size:1.5em;
+    color:blueviolet;
+}
+
+.account_info tr,
+.account_info th
+{
+    padding: 15px;
+    height : 50px;
+    text-align: center;
+    border-bottom: 1px solid #dadada;
+    font-size: 1.1em;
+}
 
 /* ARTICLE END */
-
 
 
 

@@ -1,6 +1,8 @@
 function submitAccountForm() {
     console.log('registAccountForm')
 
+    alert("ACCOUNTNUM CREATED AUTOMATICALLY!");
+
     let form = document.newAccountForm;
 
     let aPw = form.aPw.value.trim();

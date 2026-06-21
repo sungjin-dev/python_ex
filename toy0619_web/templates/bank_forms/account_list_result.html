@@ -5,7 +5,7 @@
     <title>BANK SERVICE</title>
 
     <link href="{{url_for('static', filename='css/bank_css/common.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='css/bank_css/index.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bank_css/bank.css')}}" rel="stylesheet">
 
 </head>
 <body>
@@ -13,21 +13,28 @@
     {% include 'include/header.html' %}
     {% include 'include/bank_nav.html' %}
 
-
-    <article>
-    <h3>고객 계좌 목록</h3>
-    <ul>
-        {% for accNo, value in accounts.items() %}
-            <li>
-                <strong>계좌번호:</strong> {{ accNo }} 
-                <strong>잔액:</strong> {{ value.bal }}
-                <strong>생성일:</strong> {{ value.date }}
-            </li>
-        {% else %}
-            <li>등록된 계좌가 없습니다.</li>
-        {% endfor %}
-    </ul>
-</article>
+    <article id="account_list_wrap">
+        <table class="account_list_table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>ACCOUNT NUMBER</th>
+                    <th>BALANCE</th>
+                    <th>CREATED DATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aNum, info in accounts %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="{{ url_for('bank.account_infos', aNum=aNum) }}">{{ aNum }}</a></td>
+                    <td>{{ info.bal }}</td>
+                    <td>{{ info.date }}</td>
+                </tr>
+                {% endfor %}
+    </tbody>
+</table>
+    </article>
 
   
 </body>

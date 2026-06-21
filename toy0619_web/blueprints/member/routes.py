@@ -17,6 +17,7 @@ app_bp = Blueprint(
 def signup_form():
     return render_template('member_forms/signup_form.html')
 
+
 @member_bp.route('/signup_confirm', methods=['POST'])
 def signup_confirm():
     m_id = request.form['mId']
